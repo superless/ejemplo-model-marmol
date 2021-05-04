@@ -32,6 +32,8 @@ namespace FunctionApp1
 
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
             dynamic data = JsonConvert.DeserializeObject(requestBody);
+            var version = data?.version ?? "";
+
             name = name ?? data?.name;
 
             string responseMessage = string.IsNullOrEmpty(name)
